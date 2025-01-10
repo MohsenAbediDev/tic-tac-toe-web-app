@@ -1,0 +1,13 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "MohsenAbediDev",
+  "scripts": {
+    "build": "tsc --watch"
+  },
+  "dependencies": {
+    "typescript": "^5.7.3"
+  }
+}
