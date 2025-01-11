@@ -34,7 +34,11 @@ const setPlayerTurnStatus = () => {
 
 const showWinnerModal = (icon: 'string') => {
 	const winnerIcon = document.querySelector('.winner-icon') as HTMLImageElement
+
+	winnerIcon.src = `./public/icons/${icon}.svg`
+
 	winnerModal.classList.add('show-modal')
+
 }
 
 const appendIconToCell = (

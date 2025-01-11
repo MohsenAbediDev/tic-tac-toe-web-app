@@ -30,6 +30,7 @@ const setPlayerTurnStatus = () => {
 };
 const showWinnerModal = (icon) => {
     const winnerIcon = document.querySelector('.winner-icon');
+    winnerIcon.src = `./public/icons/${icon}.svg`;
     winnerModal.classList.add('show-modal');
 };
 const appendIconToCell = (imgElem, cell, icon) => {
