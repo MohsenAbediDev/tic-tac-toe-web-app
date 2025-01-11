@@ -6,7 +6,7 @@ let player2Selection: (string | null)[] = []
 
 const gamecells = document.querySelectorAll<HTMLDivElement>('.gamecell')
 
-const winningCombinations: Number[][] = [
+const winningCombinations: number[][] = [
 	[0, 1, 2],
 	[3, 4, 5],
 	[6, 7, 8],
@@ -22,9 +22,25 @@ const changePlayersTurn = () => {
 	player2Turn = !player2Turn
 }
 
-const appendIconToCell = (imgElem: HTMLImageElement, cell: HTMLDivElement, icon: string) => {
+const appendIconToCell = (
+	imgElem: HTMLImageElement,
+	cell: HTMLDivElement,
+	icon: string
+) => {
 	imgElem.src = `./public/icons/${icon}.svg`
 	cell.appendChild(imgElem)
+}
+
+const checkWinner = (playerSelection: (string | null)[]) => {
+	const selectedPositions = playerSelection.map(Number)
+
+	for (const combination of winningCombinations) {
+		if (combination.every((pos) => selectedPositions.includes(pos))) {
+			return true
+		}
+	}
+
+	return false
 }
 
 gamecells.forEach((cell) => {
@@ -40,11 +56,21 @@ gamecells.forEach((cell) => {
 
 			player1Selection.push(playerDataPosition)
 
+			if (checkWinner(player1Selection)) {
+				alert('Player 1 Wins!')
+				return
+			}
+
 			changePlayersTurn()
 		} else {
 			appendIconToCell(imgElem, cell, 'circle')
 
 			player2Selection.push(playerDataPosition)
+
+			if (checkWinner(player2Selection)) {
+				alert('Player 2 Wins!')
+				return
+			}
 
 			changePlayersTurn()
 		}

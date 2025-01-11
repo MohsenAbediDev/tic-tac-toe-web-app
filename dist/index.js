@@ -22,6 +22,15 @@ const appendIconToCell = (imgElem, cell, icon) => {
     imgElem.src = `./public/icons/${icon}.svg`;
     cell.appendChild(imgElem);
 };
+const checkWinner = (playerSelection) => {
+    const selectedPositions = playerSelection.map(Number);
+    for (const combination of winningCombinations) {
+        if (combination.every((pos) => selectedPositions.includes(pos))) {
+            return true;
+        }
+    }
+    return false;
+};
 gamecells.forEach((cell) => {
     cell.addEventListener('click', (e) => {
         const imgElem = document.createElement('img');
@@ -32,11 +41,19 @@ gamecells.forEach((cell) => {
         if (player1Turn) {
             appendIconToCell(imgElem, cell, 'cross');
             player1Selection.push(playerDataPosition);
+            if (checkWinner(player1Selection)) {
+                alert('Player 1 Wins!');
+                return;
+            }
             changePlayersTurn();
         }
         else {
             appendIconToCell(imgElem, cell, 'circle');
             player2Selection.push(playerDataPosition);
+            if (checkWinner(player2Selection)) {
+                alert('Player 2 Wins!');
+                return;
+            }
             changePlayersTurn();
         }
     });
