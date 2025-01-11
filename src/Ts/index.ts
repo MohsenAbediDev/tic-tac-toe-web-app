@@ -22,6 +22,7 @@ const winningCombinations: number[][] = [
 	[2, 4, 6],
 ]
 
+// Function's
 const changePlayersTurn = () => {
 	player1Turn = !player1Turn
 	player2Turn = !player2Turn
@@ -42,6 +43,8 @@ const showWinnerModal = (icon: string) => {
 
 	winnerModal.classList.add('show-modal')
 	winnerModal.classList.remove('close-modal')
+
+	resetCells()
 }
 
 const closeWinnerModal = () => {
@@ -69,6 +72,13 @@ const checkWinner = (playerSelection: (string | null)[]) => {
 	return false
 }
 
+const resetCells = () => {
+	gamecells.forEach((cell) => {
+		cell.innerHTML = ''
+	})
+}
+
+// Event's
 gamecells.forEach((cell) => {
 	cell.addEventListener('click', (e) => {
 		const imgElem = document.createElement('img')

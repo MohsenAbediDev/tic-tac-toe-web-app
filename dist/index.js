@@ -17,6 +17,7 @@ const winningCombinations = [
     [0, 4, 8],
     [2, 4, 6],
 ];
+// Function's
 const changePlayersTurn = () => {
     player1Turn = !player1Turn;
     player2Turn = !player2Turn;
@@ -34,6 +35,7 @@ const showWinnerModal = (icon) => {
     winnerIcon.src = `./public/icons/${icon}.svg`;
     winnerModal.classList.add('show-modal');
     winnerModal.classList.remove('close-modal');
+    resetCells();
 };
 const closeWinnerModal = () => {
     winnerModal.classList.add('close-modal');
@@ -51,6 +53,12 @@ const checkWinner = (playerSelection) => {
     }
     return false;
 };
+const resetCells = () => {
+    gamecells.forEach((cell) => {
+        cell.innerHTML = '';
+    });
+};
+// Event's
 gamecells.forEach((cell) => {
     cell.addEventListener('click', (e) => {
         const imgElem = document.createElement('img');
