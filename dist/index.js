@@ -18,6 +18,10 @@ const changePlayersTurn = () => {
     player1Turn = !player1Turn;
     player2Turn = !player2Turn;
 };
+const appendIconToCell = (imgElem, cell, icon) => {
+    imgElem.src = `./public/icons/${icon}.svg`;
+    cell.appendChild(imgElem);
+};
 gamecells.forEach((cell) => {
     cell.addEventListener('click', (e) => {
         const imgElem = document.createElement('img');
@@ -26,14 +30,12 @@ gamecells.forEach((cell) => {
         if (cell.hasChildNodes())
             return;
         if (player1Turn) {
-            imgElem.src = './public/icons/cross.svg';
-            cell.appendChild(imgElem);
+            appendIconToCell(imgElem, cell, 'cross');
             player1Selection.push(playerDataPosition);
             changePlayersTurn();
         }
         else {
-            imgElem.src = './public/icons/circle.svg';
-            cell.appendChild(imgElem);
+            appendIconToCell(imgElem, cell, 'circle');
             player2Selection.push(playerDataPosition);
             changePlayersTurn();
         }

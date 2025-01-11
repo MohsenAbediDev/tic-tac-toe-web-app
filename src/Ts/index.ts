@@ -22,6 +22,11 @@ const changePlayersTurn = () => {
 	player2Turn = !player2Turn
 }
 
+const appendIconToCell = (imgElem: HTMLImageElement, cell: HTMLDivElement, icon: string) => {
+	imgElem.src = `./public/icons/${icon}.svg`
+	cell.appendChild(imgElem)
+}
+
 gamecells.forEach((cell) => {
 	cell.addEventListener('click', (e) => {
 		const imgElem = document.createElement('img')
@@ -31,15 +36,13 @@ gamecells.forEach((cell) => {
 		if (cell.hasChildNodes()) return
 
 		if (player1Turn) {
-			imgElem.src = './public/icons/cross.svg'
-			cell.appendChild(imgElem)
+			appendIconToCell(imgElem, cell, 'cross')
 
 			player1Selection.push(playerDataPosition)
 
 			changePlayersTurn()
 		} else {
-			imgElem.src = './public/icons/circle.svg'
-			cell.appendChild(imgElem)
+			appendIconToCell(imgElem, cell, 'circle')
 
 			player2Selection.push(playerDataPosition)
 
