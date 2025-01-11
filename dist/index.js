@@ -55,6 +55,16 @@ const checkWinner = (playerSelection) => {
     }
     return false;
 };
+const isBoardFull = () => {
+    return Array.from(gamecells).every((cell) => cell.hasChildNodes());
+};
+const handleTieGame = () => {
+    const modalDisc = document.querySelector('.winner-modal-desc'); // prettier-ignore
+    modalDisc.innerHTML = 'Draw!';
+    winnerModal.classList.add('show-modal');
+    winnerModal.classList.remove('close-modal');
+    resetGame();
+};
 const resetPlayersSelections = () => {
     player1Selection = [];
     player2Selection = [];
@@ -108,6 +118,10 @@ gamecells.forEach((cell) => {
                 return;
             }
             changePlayersTurn();
+        }
+        if (isBoardFull()) {
+            handleTieGame();
+            return;
         }
         setPlayerTurnStatus();
     });
