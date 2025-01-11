@@ -7,13 +7,15 @@ let player2Selection: (string | null)[] = []
 let player1Score: number = 0
 let player2Score: number = 0
 
+// Dom element's
 const gamecells = document.querySelectorAll<HTMLDivElement>('.gamecell')
 const playerTurnStatus = document.querySelector('.player-turn-status') as HTMLImageElement // prettier-ignore
 const winnerModal = document.querySelector('.winner-modal') as HTMLDivElement
-const closeModalIcon = document.querySelector(
-	'.close-modal-icon'
-) as HTMLImageElement
+const closeModalIcon = document.querySelector('.close-modal-icon') as HTMLImageElement // prettier-ignore
+const modalDesc = document.querySelector('.winner-modal-desc') as HTMLDivElement // prettier-ignore
+const drawModal = document.querySelector('.draw-modal') as HTMLDivElement // prettier-ignore
 
+// winningCombinations
 const winningCombinations: number[][] = [
 	[0, 1, 2],
 	[3, 4, 5],
@@ -44,6 +46,9 @@ const showWinnerModal = (icon: string) => {
 
 	winnerIcon.src = `./public/icons/${icon}.svg`
 
+	modalDesc.classList.remove('hide')
+	drawModal.classList.add('hide')
+	
 	winnerModal.classList.add('show-modal')
 	winnerModal.classList.remove('close-modal')
 
@@ -80,9 +85,8 @@ const isBoardFull = (): boolean => {
 }
 
 const handleTieGame = () => {
-	const modalDisc = document.querySelector('.winner-modal-desc') as HTMLDivElement // prettier-ignore
-
-	modalDisc.innerHTML = 'Draw!'
+	drawModal.classList.remove('hide')
+	modalDesc.classList.add('hide')
 
 	winnerModal.classList.add('show-modal')
 	winnerModal.classList.remove('close-modal')

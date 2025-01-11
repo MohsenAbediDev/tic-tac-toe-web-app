@@ -128,7 +128,7 @@ body {
 	background: var(--modal-bg);
 }
 
-.winner-modal-desc {
+.winner-modal-desc, .draw-modal {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -153,6 +153,10 @@ body {
 }
 .close-modal {
 	top: -2000px;
+}
+
+.hide {
+	display: none;
 }
 
 /* Responsive Style's */

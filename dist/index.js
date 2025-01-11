@@ -5,10 +5,14 @@ let player1Selection = [];
 let player2Selection = [];
 let player1Score = 0;
 let player2Score = 0;
+// Dom element's
 const gamecells = document.querySelectorAll('.gamecell');
 const playerTurnStatus = document.querySelector('.player-turn-status'); // prettier-ignore
 const winnerModal = document.querySelector('.winner-modal');
-const closeModalIcon = document.querySelector('.close-modal-icon');
+const closeModalIcon = document.querySelector('.close-modal-icon'); // prettier-ignore
+const modalDesc = document.querySelector('.winner-modal-desc'); // prettier-ignore
+const drawModal = document.querySelector('.draw-modal'); // prettier-ignore
+// winningCombinations
 const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -35,6 +39,8 @@ const setPlayerTurnStatus = () => {
 const showWinnerModal = (icon) => {
     const winnerIcon = document.querySelector('.winner-icon');
     winnerIcon.src = `./public/icons/${icon}.svg`;
+    modalDesc.classList.remove('hide');
+    drawModal.classList.add('hide');
     winnerModal.classList.add('show-modal');
     winnerModal.classList.remove('close-modal');
     resetGame();
@@ -59,8 +65,8 @@ const isBoardFull = () => {
     return Array.from(gamecells).every((cell) => cell.hasChildNodes());
 };
 const handleTieGame = () => {
-    const modalDisc = document.querySelector('.winner-modal-desc'); // prettier-ignore
-    modalDisc.innerHTML = 'Draw!';
+    drawModal.classList.remove('hide');
+    modalDesc.classList.add('hide');
     winnerModal.classList.add('show-modal');
     winnerModal.classList.remove('close-modal');
     resetGame();
