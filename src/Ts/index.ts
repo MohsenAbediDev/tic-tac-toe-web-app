@@ -7,6 +7,9 @@ let player2Selection: (string | null)[] = []
 const gamecells = document.querySelectorAll<HTMLDivElement>('.gamecell')
 const playerTurnStatus = document.querySelector('.player-turn-status') as HTMLImageElement // prettier-ignore
 const winnerModal = document.querySelector('.winner-modal') as HTMLDivElement
+const closeModalIcon = document.querySelector(
+	'.close-modal-icon'
+) as HTMLImageElement
 
 const winningCombinations: number[][] = [
 	[0, 1, 2],
@@ -32,13 +35,17 @@ const setPlayerTurnStatus = () => {
 	}
 }
 
-const showWinnerModal = (icon: 'string') => {
+const showWinnerModal = (icon: string) => {
 	const winnerIcon = document.querySelector('.winner-icon') as HTMLImageElement
 
 	winnerIcon.src = `./public/icons/${icon}.svg`
 
 	winnerModal.classList.add('show-modal')
+	winnerModal.classList.remove('close-modal')
+}
 
+const closeWinnerModal = () => {
+	winnerModal.classList.add('close-modal')
 }
 
 const appendIconToCell = (
@@ -97,3 +104,5 @@ gamecells.forEach((cell) => {
 		setPlayerTurnStatus()
 	})
 })
+
+closeModalIcon.addEventListener('click', closeWinnerModal)

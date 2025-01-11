@@ -115,14 +115,14 @@ body {
 }
 
 .winner-modal {
-	transition: 0.3s;
+	transition: 0.2s top ease-in-out;
 	position: absolute;
 	display: flex;
 	align-content: center;
 	justify-content: center;
 	flex-wrap: wrap;
-	width: 0vw;
-	height: 0vh;
+	width: 35vw;
+	height: 65vh;
 	top: -2000px;
 	border-radius: 15px;
 	background: var(--modal-bg);
@@ -147,12 +147,9 @@ body {
 
 /* Animation's */
 .show-modal {
-	width: 35vw;
-	height: 65vh;
-	top: auto;
+	top: 50%;
+	transform: translateY(-50%);
 }
 .close-modal {
-	width: 0vw;
-	height: 0vh;
 	top: -2000px;
 }
