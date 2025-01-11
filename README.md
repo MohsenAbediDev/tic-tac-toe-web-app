@@ -1,6 +1,6 @@
 ## Tic Tac Toe Web Game
 
-![Screenshot 2025-01-12 014724](https://github.com/user-attachments/assets/fbee5868-853d-406b-806f-6fed75864c80)
+<image src="https://github.com/user-attachments/assets/fbee5868-853d-406b-806f-6fed75864c80" width="40%" />
 
 
 [Play online](https://mohsenabedidev.github.io/tic-tac-toe-web-app/)
@@ -36,4 +36,4 @@ Feel free to fork the repository and submit pull requests. For major changes, pl
 
 ### License
 
-This project is licensed under the MIT License.
+This project is licensed under the <a href="https://github.com/MohsenAbediDev/tic-tac-toe-web-app/blob/76c8102ae5d56ce289991255afb3a08786605868/LICENSE" >MIT</a> License.
