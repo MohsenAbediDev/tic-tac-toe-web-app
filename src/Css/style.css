@@ -127,6 +127,7 @@ body {
 	border-radius: 15px;
 	background: var(--modal-bg);
 }
+
 .winner-modal-desc {
 	display: flex;
 	align-items: center;
@@ -152,4 +153,12 @@ body {
 }
 .close-modal {
 	top: -2000px;
+}
+
+/* Responsive Style's */
+@media (max-width: 768px) {
+	.winner-modal {
+		width: 85vw;
+		height: 55vh;
+	}
 }
