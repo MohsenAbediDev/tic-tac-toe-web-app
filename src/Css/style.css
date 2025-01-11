@@ -1,0 +1,65 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+:root {
+	--gamecell-hover-dark: #5c5c5c54;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: #191b1c;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+}
+
+.gameboard {
+	width: min(90vw, 470px);
+	height: 80%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+}
+
+.gamecell {
+	display: flex;
+	align-items: center;
+	border: #bbbbbb 1px solid;
+	justify-content: center;
+	cursor: pointer;
+}
+.gamecell:hover {
+	background: var(--gamecell-hover-dark);
+}
+
+/* Remove outline border */
+.gamecell:nth-child(1),
+.gamecell:nth-child(2),
+.gamecell:nth-child(3) {
+	border-top: none;
+}
+
+.gamecell:nth-child(3n + 1) {
+	border-left: none;
+}
+
+.gamecell:nth-child(7),
+.gamecell:nth-child(8),
+.gamecell:nth-child(9) {
+	border-bottom: none;
+}
+
+.gamecell:nth-child(3n) {
+	border-right: none;
+}
