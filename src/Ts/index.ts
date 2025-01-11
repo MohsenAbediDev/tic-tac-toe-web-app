@@ -5,6 +5,7 @@ let player1Selection: (string | null)[] = []
 let player2Selection: (string | null)[] = []
 
 const gamecells = document.querySelectorAll<HTMLDivElement>('.gamecell')
+const playerTurnStatus = document.querySelector('.player-turn-status') as HTMLImageElement // prettier-ignore
 
 const winningCombinations: number[][] = [
 	[0, 1, 2],
@@ -20,6 +21,14 @@ const winningCombinations: number[][] = [
 const changePlayersTurn = () => {
 	player1Turn = !player1Turn
 	player2Turn = !player2Turn
+}
+
+const setPlayerTurnStatus = () => {
+	if (player1Turn) {
+		playerTurnStatus.src = './public/icons/cross.svg'
+	} else {
+		playerTurnStatus.src = './public/icons/circle.svg'
+	}
 }
 
 const appendIconToCell = (
@@ -74,5 +83,7 @@ gamecells.forEach((cell) => {
 
 			changePlayersTurn()
 		}
+
+		setPlayerTurnStatus()
 	})
 })

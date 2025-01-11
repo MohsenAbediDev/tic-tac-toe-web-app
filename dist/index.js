@@ -4,6 +4,7 @@ let player2Turn = false;
 let player1Selection = [];
 let player2Selection = [];
 const gamecells = document.querySelectorAll('.gamecell');
+const playerTurnStatus = document.querySelector('.player-turn-status'); // prettier-ignore
 const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -17,6 +18,14 @@ const winningCombinations = [
 const changePlayersTurn = () => {
     player1Turn = !player1Turn;
     player2Turn = !player2Turn;
+};
+const setPlayerTurnStatus = () => {
+    if (player1Turn) {
+        playerTurnStatus.src = './public/icons/cross.svg';
+    }
+    else {
+        playerTurnStatus.src = './public/icons/circle.svg';
+    }
 };
 const appendIconToCell = (imgElem, cell, icon) => {
     imgElem.src = `./public/icons/${icon}.svg`;
@@ -56,5 +65,6 @@ gamecells.forEach((cell) => {
             }
             changePlayersTurn();
         }
+        setPlayerTurnStatus();
     });
 });
