@@ -10,6 +10,7 @@
 
 :root {
 	--gamecell-hover-dark: #5c5c5c54;
+	--modal-bg: #411f79;
 }
 
 body,
@@ -111,4 +112,47 @@ body {
 	margin: 0 5px;
 	filter: brightness(0) saturate(100%) invert(29%) sepia(77%) saturate(5193%)
 		hue-rotate(348deg) brightness(97%) contrast(106%);
+}
+
+.winner-modal {
+	transition: 0.3s;
+	position: absolute;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 0vw;
+	height: 0vh;
+	top: -2000px;
+	border-radius: 15px;
+	background: var(--modal-bg);
+}
+.winner-modal-desc {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 35px;
+	gap: 10px;
+}
+.winner-icon {
+	width: 35px;
+}
+.close-modal-icon {
+	position: absolute;
+	width: 30px;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}
+
+/* Animation's */
+.show-modal {
+	width: 35vw;
+	height: 65vh;
+	top: auto;
+}
+.close-modal {
+	width: 0vw;
+	height: 0vh;
+	top: -2000px;
 }

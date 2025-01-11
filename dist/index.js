@@ -5,6 +5,7 @@ let player1Selection = [];
 let player2Selection = [];
 const gamecells = document.querySelectorAll('.gamecell');
 const playerTurnStatus = document.querySelector('.player-turn-status'); // prettier-ignore
+const winnerModal = document.querySelector('.winner-modal');
 const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
@@ -26,6 +27,10 @@ const setPlayerTurnStatus = () => {
     else {
         playerTurnStatus.src = './public/icons/circle.svg';
     }
+};
+const showWinnerModal = (icon) => {
+    const winnerIcon = document.querySelector('.winner-icon');
+    winnerModal.classList.add('show-modal');
 };
 const appendIconToCell = (imgElem, cell, icon) => {
     imgElem.src = `./public/icons/${icon}.svg`;
@@ -51,7 +56,7 @@ gamecells.forEach((cell) => {
             appendIconToCell(imgElem, cell, 'cross');
             player1Selection.push(playerDataPosition);
             if (checkWinner(player1Selection)) {
-                alert('Player 1 Wins!');
+                showWinnerModal('cross');
                 return;
             }
             changePlayersTurn();
@@ -60,7 +65,7 @@ gamecells.forEach((cell) => {
             appendIconToCell(imgElem, cell, 'circle');
             player2Selection.push(playerDataPosition);
             if (checkWinner(player2Selection)) {
-                alert('Player 2 Wins!');
+                showWinnerModal('circle');
                 return;
             }
             changePlayersTurn();
