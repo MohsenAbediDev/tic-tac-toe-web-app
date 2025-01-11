@@ -4,6 +4,9 @@ let player2Turn: boolean = false
 let player1Selection: (string | null)[] = []
 let player2Selection: (string | null)[] = []
 
+let player1Score: number = 0
+let player2Score: number = 0
+
 const gamecells = document.querySelectorAll<HTMLDivElement>('.gamecell')
 const playerTurnStatus = document.querySelector('.player-turn-status') as HTMLImageElement // prettier-ignore
 const winnerModal = document.querySelector('.winner-modal') as HTMLDivElement
@@ -44,7 +47,7 @@ const showWinnerModal = (icon: string) => {
 	winnerModal.classList.add('show-modal')
 	winnerModal.classList.remove('close-modal')
 
-	resetCells()
+	resetGame()
 }
 
 const closeWinnerModal = () => {
@@ -72,10 +75,34 @@ const checkWinner = (playerSelection: (string | null)[]) => {
 	return false
 }
 
+const resetPlayersSelections = () => {
+	player1Selection = []
+	player2Selection = []
+}
+
+const setPlayerScore = (player: number) => {
+	const player1ScoreElem = document.querySelector('.player1-score') as HTMLSpanElement // prettier-ignore
+	const player2ScoreElem = document.querySelector('.player2-score') as HTMLSpanElement // prettier-ignore
+
+	if (player === 1) {
+		player1ScoreElem.innerHTML = String((player1Score += 1))
+	} else {
+		player2ScoreElem.innerHTML = String((player2Score += 1))
+	}
+}
+
 const resetCells = () => {
 	gamecells.forEach((cell) => {
 		cell.innerHTML = ''
 	})
+}
+
+const resetGame = () => {
+	resetCells()
+	resetPlayersSelections()
+	player1Turn = true
+	player2Turn = false
+	setPlayerTurnStatus()
 }
 
 // Event's
@@ -94,6 +121,7 @@ gamecells.forEach((cell) => {
 
 			if (checkWinner(player1Selection)) {
 				showWinnerModal('cross')
+				setPlayerScore(1)
 				return
 			}
 
@@ -105,6 +133,7 @@ gamecells.forEach((cell) => {
 
 			if (checkWinner(player2Selection)) {
 				showWinnerModal('circle')
+				setPlayerScore(2)
 				return
 			}
 
